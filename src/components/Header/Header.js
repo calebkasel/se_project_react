@@ -14,7 +14,7 @@ const Header = ({ onCreateModal, weatherLocation }) => {
         <div className="header__logo">
           <img src={Logo} alt="WTWR-logo" />
         </div>
-        <h3 className="header__date-location">
+        <h3 className="header__info">
           {currentDate}, {weatherLocation}
         </h3>
       </div>
@@ -28,7 +28,7 @@ const Header = ({ onCreateModal, weatherLocation }) => {
             + Add Clothes
           </button>
         </div>
-        <h3 className="header__name">Caleb Kaselnak</h3>
+        <h3 className="header__user">Caleb Kaselnak</h3>
         <div>
           <img src={Avatar} alt="logo" className="header__avatar" />
         </div>

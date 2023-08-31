@@ -1,3 +1,16 @@
+import daySunny from "../images/day/sunny.svg";
+import nightClear from "../images/night/clear.svg";
+import dayCloudy from "../images/day/cloudy.svg";
+import nightCloudy from "../images/night/cloudy.svg";
+import dayFog from "../images/day/fog.svg";
+import nightFog from "../images/night/fog.svg";
+import dayRain from "../images/day/rain.svg";
+import nightRain from "../images/night/rain.svg";
+import daySnow from "../images/day/snow.svg";
+import nightSnow from "../images/night/snow.svg";
+import dayStorm from "../images/night/storm.svg";
+import nightStorm from "../images/night/storm.svg";
+
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -38,18 +51,18 @@ export const defaultClothingItems = [
 ];
 
 export const weatherOptions = [
-  { url: "../images/day/sunny.svg", day: true, type: "sunny" },
-  { url: "../images/night/clear.svg", day: false, type: "clear" },
-  { url: "../images/day/cloudy.svg", day: true, type: "cloudy" },
-  { url: "../images/night/cloudy.svg", day: false, type: "cloudy" },
-  { url: "../images/day/fog.svg", day: true, type: "fog" },
-  { url: "../images/night/fog.svg", day: false, type: "fog" },
-  { url: "../images/day/rain.svg", day: true, type: "rain" },
-  { url: "../images/night/rain.svg", day: false, type: "rain" },
-  { url: "../images/day/snow.svg", day: true, type: "snow" },
-  { url: "../images/night/snow.svg", day: false, type: "snow" },
-  { url: "../images/day/storm.svg", day: true, type: "storm" },
-  { url: "../images/night/storm.svg", day: false, type: "storm" },
+  { url: daySunny, day: true, type: "sunny" },
+  { url: nightClear, day: false, type: "clear" },
+  { url: dayCloudy, day: true, type: "cloudy" },
+  { url: nightCloudy, day: false, type: "cloudy" },
+  { url: dayFog, day: true, type: "fog" },
+  { url: nightFog, day: false, type: "fog" },
+  { url: dayRain, day: true, type: "rain" },
+  { url: nightRain, day: false, type: "rain" },
+  { url: daySnow, day: true, type: "snow" },
+  { url: nightSnow, day: false, type: "snow" },
+  { url: dayStorm, day: true, type: "storm" },
+  { url: nightStorm, day: false, type: "storm" },
 ];
 
 export const latitude = 44.9778;

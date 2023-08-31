@@ -22,7 +22,7 @@
   max-height: 40px;
 }
 
-.header__name {
+.header__user {
   color: #000;
   padding-left: 20px;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
@@ -39,7 +39,7 @@
   border: 1px;
 }
 
-.header__date-location {
+.header__info {
   color: #000;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 20px;

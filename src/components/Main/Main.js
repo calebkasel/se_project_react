@@ -24,7 +24,7 @@ function Main({ weatherTemp, onSelectCard }) {
       <WeatherCard day={false} type="storm" weatherTemp={weatherTemp} />
       <section className="card__section" id="card">
         <h2 className="card__section-title">
-          Today is {weatherTemp}°F /You may want to wear:
+          Today is {weatherTemp}°F / You may want to wear:
         </h2>
         <div className="card__items">
           {""}
