@@ -68,20 +68,3 @@ export const weatherOptions = [
 export const latitude = 44.9778;
 export const longitude = -93.265;
 export const apiKey = "3263eb750864808d2f8e0e2eb38770bb";
-
-export const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Error: ${res.status}`);
-};
-
-export const getWeatherType = (weatherTemp) => {
-  if (weatherTemp >= 86) {
-    return "hot";
-  } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-    return "warm";
-  } else if (weatherTemp <= 65) {
-    return "cold";
-  }
-};

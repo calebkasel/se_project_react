@@ -1,7 +1,8 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems, getWeatherType } from "../../utils/constants";
+import { defaultClothingItems } from "../../utils/constants";
+import { getWeatherType } from "../../utils/utils";
 
 function Main({ weatherTemp, onSelectCard }) {
   const weatherType = getWeatherType(weatherTemp);
