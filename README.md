@@ -11,7 +11,7 @@ This application currently uses HTML, CSS, Javascript, and React.
 ## Links
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
-- [Github Repo](https://github.com/calebkasl/se_project_react)
+- [Github Repo](https://github.com/calebkasel/se_project_react)
 
 ## Plans for Improvement
 
