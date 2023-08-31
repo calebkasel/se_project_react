@@ -1,4 +1,3 @@
-import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -56,8 +55,6 @@ function App() {
     };
   }, [activeModal]);
 
-  console.log(temp);
-
   return (
     <div>
       <Header
@@ -67,7 +64,11 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New Garment"
+          buttonText="Add Garment"
+          onClose={handleCloseModal}
+        >
           <div className="modal__text-inputs">
             <label className="modal__label">
               Name
