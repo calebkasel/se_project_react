@@ -39,9 +39,7 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "F"
-      ? setCurrentTemperatureUnit("C")
-      : setCurrentTemperatureUnit("F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const onAddItem = (values) => {
@@ -51,32 +49,33 @@ function App() {
       weather: values.weatherType,
     };
 
-    postNewClothingItem(newItem).then((newItem) => {
-      setClothingItems([newItem, ...clothingItems]);
-      handleCloseModal();
-      console.log(clothingItems);
-    })
-    .catch(console.error);
+    postNewClothingItem(newItem)
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseModal();
+        console.log(clothingItems);
+      })
+      .catch(console.error);
   };
 
   const handleDeleteItemSubmit = (cardId) => {
     deleteClothingItems(cardId)
-    .then((res) => {
-      const newClothingItems = clothingItems.filter((card) => {
-        return card.id !== cardId;
-      });
-      setClothingItems(newClothingItems);
-      handleCloseModal();
-    })
-    .catch(console.error);
+      .then((res) => {
+        const newClothingItems = clothingItems.filter((card) => {
+          return card.id !== cardId;
+        });
+        setClothingItems(newClothingItems);
+        handleCloseModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
     getClothingItems()
-    .then((data) => {
-      setClothingItems(data);
-    })
-    .catch(console.error);
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
