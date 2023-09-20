@@ -12,7 +12,7 @@ import {
 } from "../../utils/weatherApi";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import {
   deleteClothingItems,
   getClothingItems,
