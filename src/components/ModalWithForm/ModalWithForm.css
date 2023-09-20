@@ -110,6 +110,10 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
+.modal__radio-button-label:checked {
+  color: #000;
+}
+
 .modal__submit-button {
   margin-top: 34px;
   width: 124px;
