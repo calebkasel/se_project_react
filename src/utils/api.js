@@ -14,20 +14,22 @@ export const postNewClothingItem = (newItem) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${newItem.token}`,
     },
     body: JSON.stringify({
       name: newItem.name,
       weather: newItem.weather,
-      link: newItem.link,
+      imageUrl: newItem.imageUrl,
     }),
   }).then(checkResponse);
 };
 
-export const deleteClothingItems = (id) => {
+export const deleteClothingItems = (id, token) => {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
 };

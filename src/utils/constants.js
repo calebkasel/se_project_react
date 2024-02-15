@@ -70,8 +70,8 @@ export const longitude = -93.265;
 export const apiKey = "3263eb750864808d2f8e0e2eb38770bb";
 
 export const baseUrl =
-  "https://my-json-server.typicode.com/calebkasel/se_project_react";
-  // "http://localhost:3001";
+  // "https://my-json-server.typicode.com/calebkasel/se_project_react";
+  "http://localhost:3001";
 
 export const headers = {
   authorization: "",

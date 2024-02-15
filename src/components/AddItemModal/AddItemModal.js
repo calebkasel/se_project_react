@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+
+  const token = localStorage.getItem("jwt");
+
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     console.log(e.target.value);
     setName(e.target.value);
   };
 
-  const [link, setUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const handleUrlChange = (e) => {
     console.log(e.target.value);
-    setUrl(e.target.value);
+    setImageUrl(e.target.value);
   };
 
   const [weatherType, setWeatherType] = useState("");
@@ -21,13 +24,13 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, weatherType });
+    onAddItem({ name, imageUrl, weatherType, token });
   };
 
   useEffect(() => {
     if(!isOpen){
       setName("");
-      setUrl("");
+      setImageUrl("");
       setWeatherType("");
     }
   }, [isOpen]);
@@ -56,7 +59,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           Image
           <input
             type="url"
-            name={link}
+            name={imageUrl}
             minLength="1"
             maxLength="200"
             className="modal__input"
