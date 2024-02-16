@@ -4,14 +4,13 @@ import { useContext } from "react";
 
 const SideBar = ({ onEditProfileModal, onLogout }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
   const handleLogout = () => {
     onLogout();
   };
 
   return (
     <div className="profile__sidebar">
-      <div className="profile__sidebar-avatar-name">
+      <div className="profile__sidebar-user">
         <img
           className="profile__avatar"
           src={currentUser.avatar}
@@ -19,16 +18,16 @@ const SideBar = ({ onEditProfileModal, onLogout }) => {
         ></img>
         <div className="profile__name">{currentUser.name}</div>
       </div>
-      <div className="profile__sidebar-button-container">
+      <div className="profile__sidebar-manager">
         <button
-          className="profile__sidebar-button"
+          className="profile__sidebar-edit"
           type="button"
           onClick={onEditProfileModal}
         >
           Edit Profile Data
         </button>
         <button
-          className="profile__sidebar-button"
+          className="profile__sidebar-logout"
           type="button"
           onClick={handleLogout}
         >

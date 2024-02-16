@@ -54,6 +54,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleEditProfileModal = () => {
+    setActiveModal("edit");
+  }
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -77,9 +81,8 @@ function App() {
 
     postNewClothingItem(newItem)
       .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+        setClothingItems([newItem.data, ...clothingItems]);
         handleCloseModal();
-        console.log(clothingItems);
       })
       .catch(console.error);
   };
@@ -120,8 +123,8 @@ function App() {
       .catch(console.error);
   };
 
-  const handleEditProfileSubmit = (name, avatar, token) => {
-    editProfile(name, avatar, token)
+  const handleEditProfileSubmit = (name, avatar) => {
+    editProfile(name, avatar)
       .then((res) => {
         setCurrentUser(res.data);
         handleCloseModal();
@@ -142,15 +145,15 @@ function App() {
       ? addCardLike(item._id, currentUser._id, token)
           .then((res) => {
             setClothingItems((clothingItems) => {
-              clothingItems.map((card) => (card._id === item._id ? res : card));
+              return clothingItems.map((card) => (card._id === item._id ? res.data : card));
             });
           })
           .catch(console.error)
       : removeCardLike(item._id, currentUser._id, token)
           .then((updatedCard) => {
             setClothingItems((clothingItems) => {
-              clothingItems.map((card) =>
-                card._id === item._id ? updatedCard : card
+              return clothingItems.map((card) =>
+                card._id === item._id ? updatedCard.data : card
               );
             });
           })
@@ -235,7 +238,7 @@ function App() {
                 onCreateModal={handleCreateModal}
                 clothingItems={clothingItems}
                 onSelectCard={handleSelectedCard}
-                onEditProfileModal={handleEditProfileSubmit}
+                onEditProfileModal={handleEditProfileModal}
                 onLogout={handleLogout}
                 onCardLike={handleCardLike}
               />
@@ -280,11 +283,11 @@ function App() {
               setActiveModal={setActiveModal}
             />
           )}
-          {activeModal === "editProfile" && (
+          {activeModal === "edit" && (
             <EditProfileModal
               handleCloseModal={handleCloseModal}
               onClose={handleCloseModal}
-              isOpen={activeModal === "editProfile"}
+              isOpen={activeModal === "edit"}
               onSubmit={handleEditProfileSubmit}
             />
           )}

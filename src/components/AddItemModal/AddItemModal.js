@@ -7,13 +7,11 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
   const [imageUrl, setImageUrl] = useState("");
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setImageUrl(e.target.value);
   };
 

@@ -31,7 +31,9 @@ export const getUserInfo = (token) => {
   }).then(checkResponse);
 };
 
-export const editProfile = (name, avatar, token) => {
+export const editProfile = (name, avatar) => {
+  const token = localStorage.getItem("jwt");
+
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {

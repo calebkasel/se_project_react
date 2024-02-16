@@ -1,15 +1,13 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
-  const token = localStorage.getItem("jwt");
-
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-
   const currentUser = useContext(CurrentUserContext);
+
+  const [name, setName] = useState(currentUser.name);
+  const [avatar, setAvatar] = useState(currentUser.avatar);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,15 +19,8 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(name, avatar, token);
+    onSubmit(name, avatar);
   };
-
-  useEffect(() => {
-    if (!isOpen) {
-      setName(currentUser.name);
-      setAvatar(currentUser.avatar);
-    }
-  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -52,6 +43,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
             className="modal__input"
             value={name}
             onChange={handleNameChange}
+            required
           ></input>
         </label>
         <label className="modal__label">
@@ -60,8 +52,6 @@ const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit }) => {
             type="text"
             name="avatar"
             placeholder="Avatar URL"
-            minLength="1"
-            maxLength="30"
             className="modal__input"
             value={avatar}
             onChange={handleAvatarChange}

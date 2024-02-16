@@ -11,7 +11,6 @@ const Profile = ({
   onLogout,
   onCardLike,
 }) => {
-  console.log(clothingItems);
   return (
     <section className="profile">
       <div className="profile__sidebar">

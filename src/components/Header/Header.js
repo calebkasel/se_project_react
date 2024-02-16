@@ -52,13 +52,13 @@ const Header = ({
               {currentUser.name}
             </Link>
           </div>
-          <div>
+          <div className="header__avatar">
             {showAvatar ? (
               <Link to="/profile">
-                <img src={currentUser.avatar} alt="logo" className="header__avatar" />
+                <img src={currentUser.avatar} alt="logo" className="header__avatar-default" />
               </Link>
             ) : (
-              <p className="header__avatar">{name[0]?.toUpperCase()}</p>
+              <p className="header__avatar-default">{name[0]?.toUpperCase()}</p>
             )}
           </div>
         </div>
