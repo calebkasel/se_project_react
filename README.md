@@ -14,7 +14,7 @@ The backend for the project is listed below in the Express project.
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Github Repo](https://github.com/calebkasel/se_project_react)
-- [Github Repo](https://github.com/calebkasel/se_project_express)
+- [Backend Express Repo](https://github.com/calebkasel/se_project_express)
 
 ## Plans for Improvement
 
