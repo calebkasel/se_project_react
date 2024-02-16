@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
-
   const token = localStorage.getItem("jwt");
 
   const [name, setName] = useState("");
@@ -18,7 +17,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [weatherType, setWeatherType] = useState("");
   const handleWeatherTypeChange = (e) => {
     setWeatherType(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +25,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   };
 
   useEffect(() => {
-    if(!isOpen){
+    if (!isOpen) {
       setName("");
       setImageUrl("");
       setWeatherType("");
@@ -76,7 +75,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             name="radio-weather-button"
             onChange={handleWeatherTypeChange}
           />
-          <label className="modal__radio-button-label">Hot</label>
+          <label className="modal__radio-button-label" htmlFor="hot">
+            Hot
+          </label>
         </div>
         <div>
           <input
@@ -87,7 +88,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             name="radio-weather-button"
             onChange={handleWeatherTypeChange}
           />
-          <label className="modal__radio-button-label">Warm</label>
+          <label className="modal__radio-button-label" htmlFor="warm">
+            Warm
+          </label>
         </div>
         <div>
           <input
@@ -98,7 +101,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             name="radio-weather-button"
             onChange={handleWeatherTypeChange}
           />
-          <label className="modal__radio-button-label">Cold</label>
+          <label className="modal__radio-button-label" htmlFor="cold">
+            Cold
+          </label>
         </div>
       </div>
     </ModalWithForm>

@@ -40,7 +40,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [loggedIn, setLoggedIn] = useState("");
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -56,7 +56,7 @@ function App() {
 
   const handleEditProfileModal = () => {
     setActiveModal("edit");
-  }
+  };
 
   const handleCloseModal = () => {
     setActiveModal("");
@@ -145,7 +145,9 @@ function App() {
       ? addCardLike(item._id, currentUser._id, token)
           .then((res) => {
             setClothingItems((clothingItems) => {
-              return clothingItems.map((card) => (card._id === item._id ? res.data : card));
+              return clothingItems.map((card) =>
+                card._id === item._id ? res.data : card
+              );
             });
           })
           .catch(console.error)
@@ -212,88 +214,86 @@ function App() {
   }, [loggedIn]);
 
   return (
-    <div>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <CurrentUserContext.Provider value={currentUser}>
-          <Header
-            onCreateModal={handleCreateModal}
-            weatherLocation={weatherLocation}
-            onLoginModal={handleLoginModal}
-            onRegisterModal={handleRegisterModal}
-            loggedIn={loggedIn}
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          onCreateModal={handleCreateModal}
+          weatherLocation={weatherLocation}
+          onLoginModal={handleLoginModal}
+          onRegisterModal={handleRegisterModal}
+          loggedIn={loggedIn}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+              onCardLike={handleCardLike}
+            />
+          </Route>
+          <ProtectedRoute path="/profile" loggedIn={loggedIn}>
+            <Profile
+              onCreateModal={handleCreateModal}
+              clothingItems={clothingItems}
+              onSelectCard={handleSelectedCard}
+              onEditProfileModal={handleEditProfileModal}
+              onLogout={handleLogout}
+              onCardLike={handleCardLike}
+            />
+          </ProtectedRoute>
+          <Route exact path="">
+            {loggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
+          </Route>
+        </Switch>
+        <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            onClose={handleCloseModal}
+            onAddItem={onAddItem}
+            isOpen={activeModal === "create"}
           />
-          <Switch>
-            <Route exact path="/">
-              <Main
-                weatherTemp={temp}
-                onSelectCard={handleSelectedCard}
-                clothingItems={clothingItems}
-                onCardLike={handleCardLike}
-              />
-            </Route>
-            <ProtectedRoute path="/profile" loggedIn={loggedIn}>
-              <Profile
-                onCreateModal={handleCreateModal}
-                clothingItems={clothingItems}
-                onSelectCard={handleSelectedCard}
-                onEditProfileModal={handleEditProfileModal}
-                onLogout={handleLogout}
-                onCardLike={handleCardLike}
-              />
-            </ProtectedRoute>
-            <Route exact path="">
-              {loggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
-            </Route>
-          </Switch>
-          <Footer />
-          {activeModal === "create" && (
-            <AddItemModal
-              handleCloseModal={handleCloseModal}
-              onClose={handleCloseModal}
-              onAddItem={onAddItem}
-              isOpen={activeModal === "create"}
-            />
-          )}
-          {activeModal === "preview" && (
-            <ItemModal
-              selectedCard={selectedCard}
-              onClose={handleCloseModal}
-              onDeleteItem={handleDeleteItemSubmit}
-              loggedIn={loggedIn}
-              currentUser={currentUser}
-            />
-          )}
-          {activeModal === "login" && (
-            <LoginModal
-              handleCloseModal={handleCloseModal}
-              onClose={handleCloseModal}
-              isOpen={activeModal === "login"}
-              onLogin={handleLogin}
-              setActiveModal={setActiveModal}
-            />
-          )}
-          {activeModal === "register" && (
-            <RegisterModal
-              handleCloseModal={handleCloseModal}
-              onClose={handleCloseModal}
-              isOpen={activeModal === "register"}
-              onRegister={handleRegisterSubmit}
-              setActiveModal={setActiveModal}
-            />
-          )}
-          {activeModal === "edit" && (
-            <EditProfileModal
-              handleCloseModal={handleCloseModal}
-              onClose={handleCloseModal}
-              isOpen={activeModal === "edit"}
-              onSubmit={handleEditProfileSubmit}
-            />
-          )}
-        </CurrentUserContext.Provider>
-      </CurrentTemperatureUnitContext.Provider>
-    </div>
+        )}
+        {activeModal === "preview" && (
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onDeleteItem={handleDeleteItemSubmit}
+            loggedIn={loggedIn}
+            currentUser={currentUser}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            onClose={handleCloseModal}
+            isOpen={activeModal === "login"}
+            onLogin={handleLogin}
+            setActiveModal={setActiveModal}
+          />
+        )}
+        {activeModal === "register" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            onClose={handleCloseModal}
+            isOpen={activeModal === "register"}
+            onRegister={handleRegisterSubmit}
+            setActiveModal={setActiveModal}
+          />
+        )}
+        {activeModal === "edit" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            onClose={handleCloseModal}
+            isOpen={activeModal === "edit"}
+            onSubmit={handleEditProfileSubmit}
+          />
+        )}
+      </CurrentUserContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
