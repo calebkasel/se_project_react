@@ -20,7 +20,6 @@ function Main({ weatherTemp, onSelectCard, clothingItems, onCardLike }) {
         day={false}
         type="storm"
         weatherTemp={temp}
-        currentTemperatureUnit={currentTemperatureUnit}
       />
       <section className="card__section" id="card">
         <h2 className="card__section-title">
