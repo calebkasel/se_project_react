@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
+const ItemModal = ({ selectedCard, onClose, onDeleteItem, onClick }) => {
   const currentUser = useContext(CurrentUserContext);
   const token = localStorage.getItem("jwt");
 
@@ -15,8 +15,8 @@ const ItemModal = ({ selectedCard, onClose, onDeleteItem }) => {
   };
 
   return (
-    <div className={`modal`}>
-      <div className="modal__content modal__content-image" onClick={onClose}>
+    <div className={`modal`} onClick={onClick}>
+      <div className="modal__content modal__content-image">
         <button
           className="modal__close-button modal__close-button-white"
           onClick={onClose}

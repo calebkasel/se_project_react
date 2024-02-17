@@ -199,6 +199,12 @@ function App() {
     };
   }, [activeModal]);
 
+  const handleOverlay = (evt) => {
+    if(evt.target === evt.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -255,6 +261,7 @@ function App() {
             onClose={handleCloseModal}
             onAddItem={onAddItem}
             isOpen={activeModal === "create"}
+            onClick={handleOverlay}
           />
         )}
         {activeModal === "preview" && (
@@ -264,6 +271,7 @@ function App() {
             onDeleteItem={handleDeleteItemSubmit}
             loggedIn={loggedIn}
             currentUser={currentUser}
+            onClick={handleOverlay}
           />
         )}
         {activeModal === "login" && (
@@ -273,6 +281,7 @@ function App() {
             isOpen={activeModal === "login"}
             onLogin={handleLogin}
             setActiveModal={setActiveModal}
+            onClick={handleOverlay}
           />
         )}
         {activeModal === "register" && (
@@ -282,6 +291,7 @@ function App() {
             isOpen={activeModal === "register"}
             onRegister={handleRegisterSubmit}
             setActiveModal={setActiveModal}
+            onClick={handleOverlay}
           />
         )}
         {activeModal === "edit" && (
@@ -290,6 +300,7 @@ function App() {
             onClose={handleCloseModal}
             isOpen={activeModal === "edit"}
             onSubmit={handleEditProfileSubmit}
+            onClick={handleOverlay}
           />
         )}
       </CurrentUserContext.Provider>
